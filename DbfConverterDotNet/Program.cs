@@ -16,7 +16,7 @@ public class dbfConvertor
         int value = BitConverter.ToInt16(allBytes, 8);//Size of the table header in bytes.
 
 
-        Byte[] bytes = new Byte[allBytes.Length];
+        Byte[] bytes = new Byte[10000000];
         using (FileStream reader = new FileStream(dbfPath, FileMode.Open))
         {
             reader.Seek(fieldDescriptorSize, SeekOrigin.Begin);
