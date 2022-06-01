@@ -16,7 +16,7 @@ namespace convertor.Tests
 
         public static byte[] HeaderStream()
         {
-            string dbfPath = @"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverterDotNet\DbfConverterDotNetTests\vertopal.com_JUL13_21 (1).dbf";
+            string dbfPath = "vertopal.com_JUL13_21 (1).dbf";
 
             Byte[] allBytes = File.ReadAllBytes(dbfPath);
             int value = BitConverter.ToInt16(allBytes, 8);//Size of the table header in bytes.
@@ -39,7 +39,7 @@ namespace convertor.Tests
         public void HeaderTest()
         {
             Byte[] bytes = HeaderStream();
-            Byte[] allBytes = File.ReadAllBytes(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverterDotNet\DbfConverterDotNetTests\vertopal.com_JUL13_21 (1).dbf");
+            Byte[] allBytes = File.ReadAllBytes("vertopal.com_JUL13_21 (1).dbf");
             int value = BitConverter.ToInt16(allBytes, 8);
 
             var actual = dbfConvertor.Header(bytes, allBytes, value);
@@ -52,7 +52,7 @@ namespace convertor.Tests
         public void RowsRecordsAndOutputTest1()
         {
             Byte[] bytes = HeaderStream();
-            Byte[] allBytes = File.ReadAllBytes(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverterDotNet\DbfConverterDotNetTests\vertopal.com_JUL13_21 (1).dbf");
+            Byte[] allBytes = File.ReadAllBytes("vertopal.com_JUL13_21 (1).dbf");
             int value = BitConverter.ToInt16(allBytes, 8);
             var lsit = dbfConvertor.Header(bytes, allBytes, value);
 
