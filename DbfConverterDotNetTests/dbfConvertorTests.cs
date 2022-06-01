@@ -36,7 +36,7 @@ namespace convertor.Tests
     public class dbfConvertorTests: Stream 
     {
         [TestMethod()]
-        public void HeaderTest1()
+        public void HeaderTest()
         {
             Byte[] bytes = HeaderStream();
             Byte[] allBytes = File.ReadAllBytes(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverterDotNet\DbfConverterDotNetTests\vertopal.com_JUL13_21 (1).dbf");
@@ -49,7 +49,7 @@ namespace convertor.Tests
         }
 
         [TestMethod()]
-        public void RowsRecordsAndOutputTest2()
+        public void RowsRecordsAndOutputTest1()
         {
             Byte[] bytes = HeaderStream();
             Byte[] allBytes = File.ReadAllBytes(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverterDotNet\DbfConverterDotNetTests\vertopal.com_JUL13_21 (1).dbf");
