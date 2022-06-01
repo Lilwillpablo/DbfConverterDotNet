@@ -6,17 +6,18 @@ public class dbfConvertor
 {
     const string carriageReturn = "\r"; //Carriage return. After this symbol record of headers is over.
     const int fieldDescriptorSize = 32; //The size of the DBF file header.
+    
 
     #region File stream wich returns array of headers in bytes.
     public static void Main(string[] args)
     {
-        string dbfPath = args[0];
+        string dbfPath = @"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverterDotNet\DbfConverterDotNetTests\vertopal.com_JUL13_21 (1).dbf";
 
         Byte[] allBytes = File.ReadAllBytes(dbfPath);
         int value = BitConverter.ToInt16(allBytes, 8);//Size of the table header in bytes.
 
 
-        Byte[] bytes = new Byte[allBytes.Length];
+        Byte[] bytes = new Byte[10000000];
         using (FileStream reader = new FileStream(dbfPath, FileMode.Open))
         {
             reader.Seek(fieldDescriptorSize, SeekOrigin.Begin);
@@ -61,7 +62,7 @@ public class dbfConvertor
                 fieldSize = (int)subSize[0];
                 var column = new Column(fieldName, fieldType, fieldSize);
                 arlist.Add(column);
-
+               
             }
         }
         RowsRecordsAndOutput(arlist, allBytes, value);
